@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; width: 860px; height: 520px; overflow: hidden; font-family: 'Courier New', monospace; }
+
+  .window {
+    width: 860px;
+    height: 520px;
+    background: #161b22;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #30363d;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  .titlebar {
+    background: #21262d;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #30363d;
+  }
+
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+
+  .title {
+    color: #8b949e;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  .terminal {
+    padding: 20px 24px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .prompt { color: #58a6ff; }
+  .cmd { color: #e6edf3; }
+  .comment { color: #8b949e; }
+  .info { color: #3fb950; }
+  .warn { color: #d29922; }
+  .wer-val { color: #79c0ff; font-weight: bold; }
+  .model-tag { color: #bc8cff; }
+  .clip-tag { color: #ffa657; }
+  .bar-good { color: #3fb950; }
+  .bar-mid { color: #d29922; }
+  .bar-bad { color: #f85149; }
+  .dim { color: #484f58; }
+  .bold { color: #e6edf3; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <span class="title">bash — whisper-wer-bench</span>
+  </div>
+  <div class="terminal">
+    <div><span class="prompt">➜</span> <span class="dim">whisper-wer-bench</span> <span class="cmd">python main.py --model small medium --export csv</span></div>
+    <div>&nbsp;</div>
+    <div><span class="info">✔</span> <span class="comment">Loaded 12 audio clips from data/audio/</span></div>
+    <div><span class="info">✔</span> <span class="comment">Loaded 12 reference transcripts from data/references/</span></div>
+    <div>&nbsp;</div>
+    <div><span class="comment">── Running Whisper </span><span class="model-tag">small</span><span class="comment"> ──────────────────────────────────────</span></div>
+    <div>  <span class="clip-tag">clip_001</span><span class="dim">  8.2s </span>  WER: <span class="bar-good">4.3%</span>  <span class="dim">████████████░░░░░░░░</span></div>
+    <div>  <span class="clip-tag">clip_002</span><span class="dim"> 12.5s </span>  WER: <span class="bar-mid">7.8%</span>  <span class="dim">████████████████░░░░</span></div>
+    <div>  <span class="clip-tag">clip_003</span><span class="dim">  6.1s </span>  WER: <span class="bar-good">2.9%</span>  <span class="dim">██████░░░░░░░░░░░░░░</span></div>
+    <div>  <span class="clip-tag">clip_004</span><span class="dim"> 15.3s </span>  WER: <span class="bar-bad">11.4%</span> <span class="dim">████████████████████</span></div>
+    <div>&nbsp;</div>
+    <div><span class="comment">── Running Whisper </span><span class="model-tag">medium</span><span class="comment"> ─────────────────────────────────────</span></div>
+    <div>  <span class="clip-tag">clip_001</span><span class="dim">  8.2s </span>  WER: <span class="bar-good">2.1%</span>  <span class="dim">████░░░░░░░░░░░░░░░░</span></div>
+    <div>  <span class="clip-tag">clip_002</span><span class="dim"> 12.5s </span>  WER: <span class="bar-good">3.5%</span>  <span class="dim">███████░░░░░░░░░░░░░</span></div>
+    <div>  <span class="clip-tag">clip_003</span><span class="dim">  6.1s </span>  WER: <span class="bar-good">1.2%</span>  <span class="dim">██░░░░░░░░░░░░░░░░░░</span></div>
+    <div>  <span class="clip-tag">clip_004</span><span class="dim"> 15.3s </span>  WER: <span class="bar-mid">5.8%</span>  <span class="dim">████████████░░░░░░░░</span></div>
+    <div>&nbsp;</div>
+    <div><span class="info">✔</span> <span class="comment">Report exported → </span><span class="bold">outputs/report.csv</span></div>
+    <div><span class="info">✔</span> <span class="comment">Plots saved    → </span><span class="bold">outputs/plots/</span></div>
+    <div>&nbsp;</div>
+    <div><span class="dim">   small  avg WER: </span><span class="wer-val">6.6%</span>  <span class="dim">│</span>  <span class="dim">medium avg WER: </span><span class="wer-val">3.2%</span></div>
+  </div>
+</div>
+</body>
+</html>
